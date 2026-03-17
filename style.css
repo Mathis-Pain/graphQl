@@ -1,0 +1,99 @@
+body {
+  top: 0px;
+  margin-left: 0;
+  height: 100%;
+  background-color: black;
+  background-image: url('./img/01-trame.svg');
+  background-size: cover;
+  background-position: center;
+}
+
+.body-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+form {
+  align-items: center;
+  border-radius: 20px;
+  background-color: darkslategray;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: space-evenly;
+  height: 300px;
+}
+body .home {
+  height: 100vh;
+  width: 100%;
+  color: white;
+  flex-direction: column;
+}
+.home-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.welcome,
+.userName {
+  font-size: 1.5rem;
+}
+
+.disconnect {
+  color: turquoise;
+  background-color: darkslategray;
+  padding: 10px;
+  border-color: turquoise;
+  width: 100px;
+  border-radius: 20px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+
+.stats {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.stat {
+  width: auto;
+  color: turquoise;
+  background-color: darkslategray;
+  padding: 10px;
+  border-color: turquoise;
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.statResult {
+  color: turquoise;
+  margin-left: 1rem;
+}
+form input {
+  text-align: center;
+  width: 150px;
+  border-radius: 10px;
+  height: 20px;
+  padding: 5px;
+}
+
+form button {
+  color: turquoise;
+  background-color: darkslategray;
+  padding: 10px;
+  border-color: turquoise;
+  width: 100px;
+  border-radius: 20px;
+}
+
+form button:hover {
+  transform: translateY(-2px) scale(1.05);
+}
