@@ -53,7 +53,6 @@ export async function connection() {
       localStorage.setItem('address', data.data.user[0].attrs.addressCity)
       displayHome()
       bodyForm.style.display = 'none'
-      console.log('Données reçues :', data.data.user[0])
     }
   } catch (error) {
     console.error('Erreur :', error)
