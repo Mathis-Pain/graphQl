@@ -51,6 +51,7 @@ export async function connection() {
       localStorage.setItem('auditRatio', data.data.user[0].auditRatio)
       localStorage.setItem('email', data.data.user[0].attrs.email)
       localStorage.setItem('address', data.data.user[0].attrs.addressCity)
+      console.log('totalUp', data.data.user[0].totalUp)
       displayHome()
       bodyForm.style.display = 'none'
     }

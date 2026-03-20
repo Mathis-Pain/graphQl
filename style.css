@@ -3,7 +3,7 @@ body {
   margin-left: 0;
   height: 100%;
   background-color: black;
-  background-image: url('./img/01-trame.svg');
+  background-image: url('./img/background.svg');
   background-size: cover;
   background-position: center;
 }
@@ -96,4 +96,27 @@ form button {
 
 form button:hover {
   transform: translateY(-2px) scale(1.05);
+}
+
+#graph-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.section2 {
+  display: flex;
+  align-items: baseline;
+  gap: 100px;
+}
+
+.stat1 {
+  color: turquoise;
+}
+.stat2 {
+  color: #999;
+}
+.stat3 {
+  color: white;
 }

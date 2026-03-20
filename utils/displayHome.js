@@ -1,6 +1,8 @@
+import {getXpByProject} from './getXpByProject.js'
 import {getXp} from './getXp.js'
 
 export const home = document.querySelector('.home')
+export const chart = document.querySelector('#chart')
 export async function displayHome() {
   home.style.display = 'flex'
   let userName = localStorage.getItem('userName')
@@ -37,6 +39,17 @@ export async function displayHome() {
           </div>
       </div>
   </div>
-  <div class="section2">    <div id="graph-container"></div></div>`
+  <div class="section2"><div id="graph-container"></div>
+  <div id="chart"></div><div class="legend"> 
+  <div class="stat1">TotalUp</div>
+  <div class="stat2">TotalDown</div>
+  <div class="stat3">TotalUpBonus</div>
+  
+  
+  
+  
+  </div></div>`
+
+  await getXpByProject()
   await getXp()
 }
