@@ -108,9 +108,20 @@ form button:hover {
 .section2 {
   display: flex;
   align-items: baseline;
-  gap: 100px;
+  justify-content: space-between;
+  margin-top: 4rem;
 }
 
+#chart {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.statsXp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 50px;
+}
 .stat1 {
   color: turquoise;
 }

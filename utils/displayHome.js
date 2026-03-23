@@ -41,9 +41,7 @@ export async function displayHome() {
   </div>
   <div class="section2"><div id="graph-container"></div>
   <div id="chart"></div><div class="legend"> 
-  <div class="stat1">TotalUp</div>
-  <div class="stat2">TotalDown</div>
-  <div class="stat3">TotalUpBonus</div>
+ 
   
   
   

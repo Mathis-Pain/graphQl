@@ -44,16 +44,19 @@ export async function getXp() {
       return null
     }
 
-    // 🔥 Création du camembert avec les vraies données
+    // Création du camembert avec les vraies données
     const svg = createPieChart(
       stats.totalUp,
       stats.totalUpBonus,
       stats.totalDown
     )
 
-    // 👉 injecte dans ton div #chart
+    // injecte dans ton div #chart
     const container = document.getElementById('chart')
     container.innerHTML = '' // reset
+    container.innerHTML = ` <div class="statsXp"><div class="stat1">TotalUp</div>
+  <div class="stat2">TotalDown</div>
+  <div class="stat3">TotalUpBonus</div></div>`
     container.appendChild(svg)
 
     return stats
@@ -104,6 +107,5 @@ function createPieChart(totalUp, totalUpBonus, totalDown) {
 
     offset += dash
   })
-
   return svg
 }
