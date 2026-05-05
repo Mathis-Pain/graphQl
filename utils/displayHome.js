@@ -1,16 +1,17 @@
-import {getXpByProject} from './getXpByProject.js'
-import {getXp} from './getXp.js'
+import {getXpByProject} from './getXpByProject.js';
+import {getXp} from './getXp.js';
+import {getGroupInvitation} from './getGroupInvitation.js';
 
-export const home = document.querySelector('.home')
-export const chart = document.querySelector('#chart')
+export const home = document.querySelector('.home');
+export const chart = document.querySelector('#chart');
 export async function displayHome() {
-  home.style.display = 'flex'
-  let userName = localStorage.getItem('userName')
-  let auditRatio = localStorage.getItem('auditRatio')
-  let firstName = localStorage.getItem('firstName')
-  let lastName = localStorage.getItem('lastName')
-  let address = localStorage.getItem('address')
-  let email = localStorage.getItem('email')
+  home.style.display = 'flex';
+  let userName = localStorage.getItem('userName');
+  let auditRatio = localStorage.getItem('auditRatio');
+  let firstName = localStorage.getItem('firstName');
+  let lastName = localStorage.getItem('lastName');
+  let address = localStorage.getItem('address');
+  let email = localStorage.getItem('email');
 
   home.innerHTML = `
   <div class="home-header">
@@ -41,13 +42,11 @@ export async function displayHome() {
   </div>
   <div class="section2"><div id="graph-container"></div>
   <div id="chart"></div><div class="legend"> 
- 
-  
-  
-  
-  
-  </div></div>`
+  </div>
 
-  await getXpByProject()
-  await getXp()
+  </div><div class="listEnrollement"><div class="stat-invit">Tu as des invitations de la part de :</div><div id="section3">...</div></div>`;
+
+  await getXpByProject();
+  await getXp();
+  await getGroupInvitation();
 }

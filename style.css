@@ -73,6 +73,9 @@ body .home {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+rect {
+  color: turquoise;
+}
 .statResult {
   color: turquoise;
   margin-left: 1rem;
@@ -130,4 +133,18 @@ form button:hover {
 }
 .stat3 {
   color: white;
+}
+.stat-invit {
+  width: fit-content;
+  color: turquoise;
+  background-color: darkslategray;
+  padding: 10px;
+  border-color: turquoise;
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.listEnrollement {
+  margin-top: 10rem;
+  margin-left: 1rem;
 }

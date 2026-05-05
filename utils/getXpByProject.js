@@ -1,5 +1,5 @@
 export async function getXpByProject() {
-  let token = localStorage.getItem('jwt')
+  let token = localStorage.getItem('jwt');
   try {
     const response = await fetch(
       'https://zone01normandie.org/api/graphql-engine/v1/graphql',
@@ -13,75 +13,76 @@ export async function getXpByProject() {
           query: `{ transaction(where: {type: {_eq: "xp"}}) { amount path createdAt } }`
         })
       }
-    )
+    );
 
-    const data = await response.json()
+    const data = await response.json();
     if (data.errors) {
-      console.error('Erreur GraphQL :', data.errors)
-      return
+      console.error('Erreur GraphQL :', data.errors);
+      return;
     }
 
     // 1. Transformer les transactions en projets
-    const projects = processTransactions(data.data.transaction)
+    const projects = processTransactions(data.data.transaction);
     // 2. Générer et afficher le SVG
-    document.getElementById('graph-container').innerHTML = generateSVG(projects)
+    document.getElementById('graph-container').innerHTML =
+      generateSVG(projects);
   } catch (error) {
-    console.error('Erreur :', error)
+    console.error('Erreur :', error);
   }
 }
 
 // Fonction pour transformer les transactions en projets
 function processTransactions(transactions) {
-  const projectsMap = {}
+  const projectsMap = {};
 
   transactions.forEach((transaction) => {
     // Extraire le nom du projet depuis le path (ex: "/rouen/piscine-go/quest-01" → "quest-01")
-    const pathParts = transaction.path.split('/')
-    const projectName = pathParts[3] || transaction.path // Prend le 4ème segment ou le path entier
+    const pathParts = transaction.path.split('/');
+    const projectName = pathParts[3] || transaction.path; // Prend le 4ème segment ou le path entier
 
     if (!projectsMap[projectName]) {
       projectsMap[projectName] = {
         name: projectName,
         totalXP: 0,
         createdAt: transaction.createdAt
-      }
+      };
     }
-    projectsMap[projectName].totalXP += transaction.amount
-  })
+    projectsMap[projectName].totalXP += transaction.amount;
+  });
 
   // Convertir en tableau et trier par date
   return Object.values(projectsMap).sort(
     (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-  )
+  );
 }
 
 // Fonction pour générer le SVG
 function generateSVG(projects) {
   if (!projects || projects.length === 0) {
-    return '<p>Aucun projet trouvé.</p>'
+    return '<p>Aucun projet trouvé.</p>';
   }
 
   // Calcul des dimensions
-  const maxXP = Math.max(...projects.map((p) => p.totalXP))
-  const svgHeight = 300 // Augmenté pour les noms verticaux
-  const barWidth = 15 // Élargi pour les noms
-  const barGap = 5 // Espace supplémentaire pour les noms
-  const svgWidth = projects.length * (barWidth + barGap) + 50
+  const maxXP = Math.max(...projects.map((p) => p.totalXP));
+  const svgHeight = 300; // Augmenté pour les noms verticaux
+  const barWidth = 15; // Élargi pour les noms
+  const barGap = 5; // Espace supplémentaire pour les noms
+  const svgWidth = projects.length * (barWidth + barGap) + 50;
 
   // Génération des barres
-  let bars = ''
+  let bars = '';
   projects.forEach((project, index) => {
-    const barHeight = (project.totalXP / maxXP) * (svgHeight - 80) // Ajusté pour les noms
-    const x = index * (barWidth + barGap) + 30 // Décalage pour l'axe Y
-    const y = svgHeight - barHeight - 50
-    const isRecent =
+    const barHeight = (project.totalXP / maxXP) * (svgHeight - 80); // Ajusté pour les noms
+    const x = index * (barWidth + barGap) + 30; // Décalage pour l'axe Y
+    const y = svgHeight - barHeight - 50;
+    /*   const isRecent =
       new Date(project.createdAt) >
-      new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
-    const fill = isRecent ? '#8A2BE2' : 'turquoise'
+      new Date(Date.now() - 30 * 24 * 60 * 60 * 1000); */
+    const fill = /* isRecent ? '#8A2BE2' : */ 'turquoise';
 
     // Nom du projet (vertical)
-    const projectNameX = x + barWidth / 2
-    const projectNameY = svgHeight - 30
+    const projectNameX = x + barWidth / 2;
+    const projectNameY = svgHeight - 30;
 
     bars += `
       <g class="bar" data-project="${project.name}">
@@ -101,8 +102,8 @@ function generateSVG(projects) {
           font-size="12"
         >${project.name}</text>
       </g>
-    `
-  })
+    `;
+  });
 
   // Génération du SVG complet
   return `
@@ -120,5 +121,5 @@ function generateSVG(projects) {
         <text x="${svgWidth / 2}" y="${svgHeight - 10}" text-anchor="middle" fill="#999"></text>
       </g>
     </svg>
-  `
+  `;
 }
