@@ -1,31 +1,33 @@
 1. Voir tous les types disponibles :
    const query = `  {
-    __schema {
-      types {
-        name
-      }
+  __schema {
+    types {
+      name
     }
-  }`
+  }
+}`
 2. Voir les champs d'un type précis :
    const query = `  {
-    __type(name: "user") {
-      fields {
+  __type(name: "user") {
+    fields {
+      name
+      type {
         name
-        type {
-          name
-          kind
-        }
+        kind
       }
     }
-  }`
+  }
+}`
 3. Voir les queries disponibles :
    const query = `  {
-    __schema {
-      queryType {
-        fields {
-          name
-          description
-        }
+  __schema {
+    queryType {
+      fields {
+        name
+        description
       }
     }
-  }`
+  }
+}`
+
+lien du site -> https://graphqlbymathis.netlify.app/

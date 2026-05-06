@@ -51,10 +51,7 @@ export async function getGroupInvitation() {
     const container = document.getElementById('section3');
     if (container) {
       container.innerHTML = enrollerLogins
-        .map(
-          (user) =>
-            `<div class="statResult">${user?.data?.user_public_view?.[0]?.login ?? 'Inconnu'}</div>`
-        )
+        .map((login) => `<div class="statResult">${login}</div>`)
         .join('');
     }
   } catch (error) {
@@ -93,7 +90,7 @@ async function getUserEnrollment(token, idUserEnrollment) {
       return null;
     }
 
-    return data;
+    return data?.data?.user_public_view?.[0]?.login || 'Inconnu';
   } catch (error) {
     console.error('Erreur :', error);
     return null;
