@@ -57,8 +57,6 @@ export async function getGroupInvitation() {
         )
         .join('');
     }
-
-    return groupInvitation;
   } catch (error) {
     console.error('Erreur :', error);
     return null;
