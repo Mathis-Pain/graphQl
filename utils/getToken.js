@@ -8,15 +8,14 @@ export async function getToken(pseudo, password) {
           Authorization: `Basic ${btoa(`${pseudo}:${password}`)}`
         }
       }
-    )
+    );
     if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`)
+      throw new Error(`Response status: ${response.status}`);
     }
 
-    let result = await response.json() // Change text() en json()
-    console.log('Réponse API :', result) // Debug
-    return result // ou result.jwt selon la réponse
+    let result = await response.json(); // Change text() en json()
+    return result; // ou result.jwt selon la réponse
   } catch (error) {
-    console.error(error.message)
+    console.error(error.message);
   }
 }

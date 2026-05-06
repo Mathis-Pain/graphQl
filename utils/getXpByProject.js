@@ -1,5 +1,5 @@
 export async function getXpByProject() {
-  let token = localStorage.getItem('jwt');
+  let token = sessionStorage.getItem('jwt');
   try {
     const response = await fetch(
       'https://zone01normandie.org/api/graphql-engine/v1/graphql',

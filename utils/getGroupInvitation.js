@@ -1,6 +1,6 @@
 export async function getGroupInvitation() {
-  const userName = localStorage.getItem('userName');
-  const token = localStorage.getItem('jwt');
+  const userName = sessionStorage.getItem('userName');
+  const token = sessionStorage.getItem('jwt');
 
   if (!token) {
     console.error('Token JWT manquant');

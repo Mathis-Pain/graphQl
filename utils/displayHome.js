@@ -6,12 +6,12 @@ export const home = document.querySelector('.home');
 export const chart = document.querySelector('#chart');
 export async function displayHome() {
   home.style.display = 'flex';
-  let userName = localStorage.getItem('userName');
-  let auditRatio = localStorage.getItem('auditRatio');
-  let firstName = localStorage.getItem('firstName');
-  let lastName = localStorage.getItem('lastName');
-  let address = localStorage.getItem('address');
-  let email = localStorage.getItem('email');
+  let userName = sessionStorage.getItem('userName');
+  let auditRatio = sessionStorage.getItem('auditRatio');
+  let firstName = sessionStorage.getItem('firstName');
+  let lastName = sessionStorage.getItem('lastName');
+  let address = sessionStorage.getItem('address');
+  let email = sessionStorage.getItem('email');
 
   home.innerHTML = `
   <div class="home-header">

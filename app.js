@@ -4,7 +4,7 @@ import {displayHome, home} from './utils/displayHome.js';
 
 export const bodyForm = document.querySelector('.body-form');
 export const form = document.querySelector('form');
-const token = localStorage.getItem('jwt');
+const token = sessionStorage.getItem('jwt');
 if (!token) {
   home.style.display = 'none';
   form.addEventListener('submit', async (e) => {
