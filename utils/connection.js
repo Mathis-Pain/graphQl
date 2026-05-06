@@ -6,11 +6,17 @@ import {form} from '../app.js';
 export async function connection() {
   const pseudo = document.querySelector('[name="name"]').value;
   const password = document.querySelector('[name="password"]').value;
+  const errorDisplay = document.getElementById('error-message');
+
+  if (errorDisplay) {
+    errorDisplay.style.display = 'none';
+    errorDisplay.textContent = '';
+  }
 
   try {
     const token = await getToken(pseudo, password);
     form.reset();
-    if (!token) throw new Error('Token non reçu');
+    if (!token) throw new Error('identifiant incorrect');
     sessionStorage.setItem('jwt', token);
     console.log('Token stocké :', token);
 
@@ -57,5 +63,9 @@ export async function connection() {
     }
   } catch (error) {
     console.error('Erreur :', error);
+    if (errorDisplay) {
+      errorDisplay.textContent = error.message; // On affiche le message d'erreur
+      errorDisplay.style.display = 'block'; // On rend l'élément visible
+    }
   }
 }
