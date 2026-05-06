@@ -4,6 +4,7 @@ import {getGroupInvitation} from './getGroupInvitation.js';
 
 export const home = document.querySelector('.home');
 export const chart = document.querySelector('#chart');
+
 export async function displayHome() {
   home.style.display = 'flex';
   let userName = sessionStorage.getItem('userName');
